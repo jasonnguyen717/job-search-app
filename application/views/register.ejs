@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Register</title>
+    <!--Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" />
+
+    <!--basic seo-->
+    <meta name="description" content="CSC 648 Team 4 Project" />
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css" />
+    <link rel=”stylesheet”
+    href=”https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css”>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" />
+
+    <!-- Custom CSS -->
+
+    <link rel="stylesheet" href="css/style.css" />
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3MMC5N21GP"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-3MMC5N21GP');
+        </script>
+
+  </head>
+
+  <body>
+    <!--Header-->
+    <!--Header-->
+    <div class="home-banner">
+      <center>
+        <p>
+          SFSU Software Engineering Project CSC 648-848. Spring 2022. For
+          Demostration Only
+        </p>
+      </center>
+    </div>
+
+    <!--Header-->
+    <header>
+      <!--Top navigation-->
+      <div class="nav">
+        <!--Center link-->
+        <div class="nav-center">
+          <a href="/index"><img src="/img/ghlogo.png" alt="logo" /></a>
+        </div>
+
+        <!--Left aligned links-->
+        <a href="/index">Student Find Jobs</a>
+        <a href="/post">Employer /Post jobs</a>
+
+        <!--Right aligned links-->
+        <div class="nav-right">
+          <% if (user) { %>
+          <a href="/profilepage/<%= user['uid'] %>"
+            >Welcome, <%- user['firstname'] %></a
+          >
+          <a href="/logout"> Sign Out </a>
+          <%} else { %>
+          <a href="/signin">Sign in</a>
+          <a href="/register">Register</a>
+          <%} %>
+        </div>
+      </div>
+    </header>
+    <!--Register form-->
+    <div class="container2">
+      <span class="details"
+        ><center><h3>Register</h3></center></span
+      >
+      <hr />
+      <div class="content">
+        <form action="/register" method="POST">
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">First Name*</span>
+              <input
+                name="fname"
+                type="text"
+                placeholder="Enter first name"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Last Name*</span>
+              <input
+                name="lname"
+                type="text"
+                placeholder="Enter last name"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Email*</span>
+              <input
+                name="email"
+                type="text"
+                placeholder="Enter email"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Phone Number*</span>
+              <input
+                name="phone_number"
+                type="text"
+                placeholder="Enter phone number"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Password*</span>
+              <input
+                name="password"
+                type="password"
+                placeholder="Enter password"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Confirm Password*</span>
+              <input
+                name="confirm_password"
+                type="password"
+                placeholder="Enter password"
+                required
+              />
+            </div>
+          </div>
+          <br />
+
+          <label for="usertype">Choose user type:</label>
+          <select name="usertype">
+            <option value="student">Student</option>
+            <option value="employer">Employer</option>
+            <option value="admin">Admin</option>
+          </select>
+          <br /><br />
+
+          <!--Terms and use checkbox-->
+          <input type="checkbox" id="" name="terms" value="" required />
+          <label for="">Terms and use</label>
+          <br /><br />
+          <input type="checkbox" id="" name="alerts" value="alerts" />
+          <label for="">Check for job alerts</label>
+          <input type="checkbox" id="" name="admin" value="1" />
+          <label for="">Check if admin</label>
+          <br />
+
+          <!--register.js button-->
+          <div class="post-btn">
+            <input type="submit" value="Create Account" />
+          </div>
+        </form>
+        <p>Already have an account? <a href="signin">Sign in</a></p>
+      </div>
+    </div>
+
+    <!--footer-->
+    <%-include("partials/footer")%>
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!--Header-->
+<div class ="home-banner"><center><p>SFSU Software Engineering Project CSC 648-848. Spring 2022. For Demostration Only
+</p>
+</center>
+</div>
+
+  <!--Header-->
+<header>
+
+<!--Top navigation-->
+<div class="nav">
+    
+<!--Center link-->
+<div class="nav-center">
+    <a href="/index"><img src="/img/ghlogo.png" alt="logo"></a>
+    </div>
+    
+<!--Left aligned links-->
+    <a href="/index">Student Find Jobs</a>
+    <a href="/post">Employer /Post jobs</a>
+
+    <!--Right aligned links-->
+<div class="nav-right">
+    <% if (user) { %>
+    <a href="/profilepage/<%= user['uid'] %>">Welcome, <%- user['firstname'] %></a>
+    <a href = "/logout"> Sign Out </a>
+    <%} else { %>
+        <a href="/signin">Sign in</a>
+        <a href="/register" >Register</a>
+    <%} %>
+    
+    </div>
+    </div>
+    
+</header>

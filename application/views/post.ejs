@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Post A Job</title>
+    <!--Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" />
+
+    <!--basic seo-->
+    <meta name="description" content="CSC 648 Team 4 Project" />
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" />
+    <link rel=”stylesheet”
+    href=”https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css”>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3MMC5N21GP"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-3MMC5N21GP');
+        </script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNn0cKBFjgkMS9sfO4mX-xqO4ks9yO5jI&libraries=places"></script>
+        
+  </head>
+
+  <body>
+    <!--Header-->
+    <%- include("partials/header") %>
+
+    <!--Post a job form-->
+    <div class="container2">
+      <span class="details"
+        ><center><h3>Post A Job</h3></center></span
+      >
+      <hr />
+      <div class="content">
+        <form action="/post" method="POST">
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">First Name*</span>
+              <input
+                type="text"
+                name="first"
+                placeholder="Enter first name"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Last Name*</span>
+              <input
+                type="text"
+                name="last"
+                placeholder="Enter last name"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <span class="details">Company*</span>
+              <input
+                type="text"
+                name="company"
+                placeholder="Enter company name"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Job Title*</span>
+              <input
+                type="text"
+                name="title"
+                placeholder="Enter job title"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Skills*</span>
+              <input
+                type="text"
+                name="skills"
+                placeholder="Enter skills"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Passion*</span>
+              <input
+                type="text"
+                name="passion"
+                placeholder="Enter passion"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Location*</span>
+              <input
+                type="text"
+                name="location"
+                id="input-location"
+                placeholder="Enter location"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Pay*</span>
+              <input
+                type="text"
+                name="salary"
+                placeholder="Enter pay amount"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Phone Number*</span>
+              <input
+                type="text"
+                name="phone_number"
+                placeholder="Enter phone number"
+                required
+              />
+            </div>
+
+            <!--job description-->
+            <div class="input-box">
+              <span class="details">Job Description*</span>
+              <input
+                type="text"
+                name="description"
+                placeholder="Enter job description"
+                required
+              />
+            </div>
+          </div>
+
+          <!--dropdown teach area-->
+          <select name="areas">
+            <option value="error">Tech Areas*</option>
+            <option value="Artificial Intelligence and Machine Learning">
+              Artificial Intelligence and Machine Learning
+            </option>
+            <option value="Robotic Process Automation (RPA)">
+              Robotic Process Automation (RPA)
+            </option>
+            <option value="Edge Computing">Edge Computing</option>
+            <option value="Quantum Computing">Quantum Computing</option>
+            <option value="Virtual Reality and Augmented Rality">
+              Virtual Reality and Augmented Rality
+            </option>
+            <option value="Blockchain">Blockchain</option>
+            <option value="Internet of Things (IOT)">
+              Internet of Things (IOT)
+            </option>
+            <option value="5G">5G</option>
+            <option value="Cyber Security">Cyber Security</option></select
+          ><br /><br />
+
+          <!--Availability checkbox-->
+          <span class="avail">Availability:</span>
+
+          <input id="availability" type="checkbox" name="parttime" value="Part-Time" />
+          <label for="">Part-Time</label>
+          <input id="availability" type="checkbox" name="fulltime" value="Full-Time" />
+          <label for="">Full-Time</label>
+          <input id="availability" type="checkbox" name="internship" value="Internship" />
+          <label for="">Internship</label>
+          <input id="availability" type="checkbox" name="remote" value="Remote" />
+          <label for="">Remote</label>
+          <br />
+
+          <!--post button-->
+          <div class="post-btn">
+            <input type="submit" value="Post Job" />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!--footer-->
+    <%-include("partials/footer")%>
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+    <script>
+        var input = document.getElementById("input-location");
+        var autocomplete = new google.maps.places.Autocomplete(input,{types: ['(cities)']});
+    </script>
+  </body>
+</html>

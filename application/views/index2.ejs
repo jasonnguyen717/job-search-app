@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Gator Hunter</title>
+        <!--Favicon -->
+        <link rel="shortcut icon" href="/img/favicon.ico">
+
+        <!--basic seo-->
+        <meta name="description" content="CSC 648 Team 4 Project">
+
+        <!-- Fontawesome -->
+        <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+        <link rel=”stylesheet” href=”https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css”>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+
+
+    <body>
+
+          <!--Header-->
+        <%- include("partials/header") %>
+
+        <!--Search bars-->
+        <div class="container">
+        <div class="row-search">
+        <div class="col-lg-5 col-xs-5">
+
+        <form method="POST" action="/search">
+        <div class="search">
+        <input name="search" type="text" class="searchTerm" placeholder="Search" maxlength="40">
+        <!--Search button-->
+
+            </div>
+            </div>
+
+        <div class="col-lg-5 col-xs-5">
+        <div class="search">
+        <input type="text" class="searchTerm" placeholder="Location">
+        <!--Location button-->
+
+            </div>
+        </div>
+
+         <select name="category" >
+            <option value="">All Categories</option>
+            <option value="Artificial Intelligence and Machine Learning">Artificial Intelligence and Machine Learning</option>
+            <option value="Robotic Process Automation (RPA)">Robotic Process Automation (RPA)</option>
+            <option value="Edge Computing">Edge Computing</option>
+            <option value="Quantum Computing">Quantum Computing</option>
+            <option value="Virtual Reality and Augmented Reality">Virtual Reality and Augmented Reality</option>
+            <option value="Blockchain">Blockchain</option>
+            <option value="Internet of Things (IoT)">Internet of Things (IoT)</option>
+            <option value="5G">5G</option>
+            <option value="Cyber Security">Cyber Security</option>
+        </select>
+
+        <!--Find jobs button (combines search and location buttons)-->
+        <div id="findjobs-btn-pad">
+        <div class="col-lg-2 col-xs-2">
+        <button class="findjobs-btn" type="findjobs" >Find Jobs</button>
+        </div>
+        </div>
+            </div>
+        </div>
+
+
+
+        </form>
+
+        <!--Filter-->
+        <div class="row2">
+        <ul class="filter-btn">
+            <li class="filter">
+            <a href='#'>Filter</a>
+            </li>
+
+        </ul>
+        </div>
+
+        <!--Search by categories-->
+        <div id="container">
+        <div class="drop">
+            <div class="wrapper">
+            <ul class="drop_menu">
+            <li class="techarea"><a href='#'>Tech Areas <i class="fa fa-caret-down"></i></a>
+            <ul>
+                <li><a href="/posts/area/Artificial Intelligence and Machine Learning">Artificial Intelligence and Machine Learning</a></li>
+                <li><a href="/posts/area/Robotic Process Automation (RPA)">Robotic Process Automation (RPA)</a></li>
+                <li><a href="/posts/area/Edge Computing">Edge Computing</a></li>
+                <li><a href="/posts/area/Quantum Computing">Quantum Computing</a></li>
+                <li><a href="/posts/area/Virtual Reality and Augmented Reality">Virtual Reality and Augmented Reality</a></li>
+                <li><a href="/posts/area/Blockchain">Blockchain</a></li>
+                <li><a href="/posts/area/Internet of Things (IoT)">Internet of Things (IoT)</a></li>
+                <li><a href="/posts/area/5G">5G</a></li>
+                <li><a href="/posts/area/Cyber Security">Cyber Security</a></li>
+            </ul>
+            </li>
+            <li><a href='#'>Job Position <i class="fa fa-caret-down"></i></a>
+            <ul>
+            <li><a href='/posts/position/Data Engineer'>Data Engineer</a></li>
+            <li><a href='/posts/position/AI Ethicists'>AI Ethicists</a></li>
+            <li><a href='/posts/position/AI Product Designer'>AI Product Designer</a></li>
+            </ul>
+            </li>
+            <li><a href='#'>Skills <i class="fa fa-caret-down"></i></a>
+            <ul>
+            <li><a href='/posts/skills/Python'>Python</a></li>
+            <li><a href='/posts/skills/JavaScript'>JavaScript</a></li>
+            <li><a href='/posts/skills/Java'>Java</a></li>
+            </ul>
+            </li>
+            <li><a href='#'>Passion <i class="fa fa-caret-down"></i></a>
+            <ul>
+            <li><a href='/posts/passions/Social Justice'>Social Justice</a></li>
+            <li><a href='/posts/passions/Biomedical'>Biomedical</a></li>
+            </ul>
+            </li>
+            </ul>
+            </div>
+            </div>
+        </div>
+
+        <center>
+
+        <div id="search-results">
+                <% if (results.length > 0) { %>
+                     <h2 id="tilte"">Search Results</h2>
+                     <div class="srcontainer">
+                       <% results.forEach(function(post){ %>
+                        <div class="srcontent">
+                         <form action='postpage' method='POST'>
+                             <p title=> <%=post['title']%> @ <b><%=post['company']%></b>
+                             <br>
+                             Category: <%=post['areas']%>
+                             <br><br> Description: <%=post['description']%>
+                              <br>
+                              Salary: <%=post['salary']%>
+                              <br>
+                              Location: <%=post['location']%>
+                              <br>
+                              Availability: <%=post['availability']%>
+                              </p>
+                             <div id="thumbnail-container" style="height: 100px; width: 100px; border-radius: 15px; background:#7f7f7f; background:rgba(255,255,255,0.65);">
+                                <img src="<%=post['photo']%>" alt="thumbnail" style='height: 100%; width: 100%; object-fit: contain'>
+                             </div>
+                             <input id="pid" name='pid' value='<%=post['pid']%>'>
+                             <button id ="go" type='submit'> View Post </button>
+                             </form>
+                             </div>
+                       <% }) %>
+                            </div>
+                <% } else {%>
+                    <p>No results</p>
+                <% } %>
+        </div>
+        </center>
+    <!--footer-->
+    <%-include("partials/footer")%>
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+    </body>
+</html>

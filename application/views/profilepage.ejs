@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>User Profile Page</title>
+    <!--Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+
+    <!--basic seo-->
+    <meta name="description" content="CSC 648 Team 4 Project" />
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css" />
+    <link rel=”stylesheet”
+    href=”https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css”>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body>
+    <!--Header-->
+    <%- include("partials/header") %>
+
+    <div class="container3">
+            <div class="col-lg-12 col-xs-12">
+            <div id="myaccountpix">
+                <img src="img/myaccountpicfiller.jpg" alt="profile picture" class="accountpix" class="img-responsive" width="75" height="75"> 
+                </div>
+                </div>
+                <input type="file" name="" id="file" accept="image/*">
+        <% if (user) { %>
+            <p> <%= user['firstname'] %> <%= user['lastname'] %></p>
+            <form action="/profilepage/<%=user['uid']%>/update-name" method="POST">
+            <div class="user-details2">
+            <div class="input-box">
+                <input name="fname" type="text" value="<%=user['firstname']%>"/>
+                </div>
+            <div class="input-box">
+                <input name="lname" type="text" value="<%=user['lastname']%>"/>
+                </div>
+            <div class="update-btn">
+                <input type="submit" value="Update name" />
+                </div>
+            </form>
+            <br/>
+            <p> Bio: <%= user['description'] %></p>
+            <form action="/profilepage/<%=user['uid']%>/update-bio" method="POST">
+            <div class="input-box">
+                <input name="bio" type="text" value="<%=user['description']%>"/>
+                </div>
+            <div class="update-btn">
+                <input type="submit" value="Update bio" />
+                </div>
+            </form>
+            <br/>
+            <p> Skill: <%= user['skills'] %></p>
+            <form action="/profilepage/<%=user['uid']%>/update-skills" method="POST">
+            <div class="input-box">
+                <input name="skills" type="text" value="<%=user['skills']%>"/>
+                </div>
+           <div class="update-btn"> 
+                <input type="submit" value="Update skills" />
+                </div>
+            </form>
+            <br/>
+            <p> Passions: <%= user['passions'] %></p>
+            <form action="/profilepage/<%=user['uid']%>/update-passions" method="POST">
+            <div class="input-box">
+                <input name="passions" type="text" value="<%=user['passions']%>"/>
+                </div>
+            <div class="update-btn"> 
+                <input type="submit" value="Update passions" />
+                </div>
+                </div>
+            </form>
+            <br/>
+        <% } else {%>
+            <p>This is not the page you are looking for</p>
+        <% } %>
+   
+            </div>
+
+    <!--footer-->
+    <%-include("partials/footer")%>
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+  </body>
+</html>

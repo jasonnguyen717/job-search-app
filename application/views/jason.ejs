@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>About Jason</title>
+        <!--Favicon -->
+        <link rel="shortcut icon" href="img/favicon.ico">
+
+        <!--basic seo-->
+        <meta name="description" content="CSC 648 Team 4 Project">
+
+        <!-- Fontawesome -->
+        <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+        <link rel=”stylesheet” href=”https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css”>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+
+    <body>
+        <!--Header-->
+        <%- include("partials/header") %>
+
+        <h1 id="jason-head"><center>Jason Nguyen</center><br></h1>
+        <div id="about-pix">
+            <img src="img/mypixjpeg.jpg" alt="jj image"  class="imgcenter" class="img-responsive" width="300" height="300">
+        </div>
+
+        <p id="j-p1">I'm a senior for Computer Science at San Francisco State University.</p>
+        <div id="home-btn">
+            <a class="btn btn-general btn-home smooth-scroll" href="about" title="About Us" role="button">Back</a><br>
+        </div>
+            <!--footer-->
+    <%-include("partials/footer")%>
+    </body>
+
+</html>

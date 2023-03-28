@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>map test</title>
+        <style>
+            input {
+                height: 30px;
+            }
+            #map {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width:600px;
+                height:400px;
+            }
+        </style>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNn0cKBFjgkMS9sfO4mX-xqO4ks9yO5jI&libraries=places"></script>
+    </head>
+    <body>
+
+        <input type="text" id="autocomplete" placeholder="enter a location"/>
+        <button onclick="addMarker()">Load Markers</button> <br/>
+
+        <input type="text" id="place_id" placeholder="enter place id" value="ChIJgeLABbB9j4AR00VqlJ98eqU"/>
+        <button onclick="getPlaceFromID()">Get place info</button> <br/>
+
+        <div id="places"><br/></div>
+
+        <div id="map"></div>
+
+
+        <script type="text/javascript">
+            var places_box = document.getElementById("places");
+            let places_arr = [];
+            var input = document.getElementById('autocomplete');
+
+            // limits input to cities
+            var autocomplete = new google.maps.places.Autocomplete(input,{types: ['(cities)']});
+
+            // event listener for new city input
+            //      save new city address, place_id, lat & lng to places_arr
+            //      display city info
+            google.maps.event.addListener(autocomplete, 'place_changed', function(){
+                var place = autocomplete.getPlace();
+                places_arr.push([place.formatted_address, place.geometry.location.lat(), place.geometry.location.lng()]);
+//                 console.log(places_arr);
+                places_box.innerHTML += `<b>Place: ${place.formatted_address}</b> <br/>
+                                         Place ID: ${place.place_id} <br/>
+                                         Place location: ${place.geometry.location.lat()}, ${place.geometry.location.lng()} <br/><br/>`;
+            });
+
+            // map center points at san francisco
+            var markerCenter = new google.maps.LatLng( 37.724455, -122.476111);
+
+            // called at end of script tag to init map
+            function initMap() {
+                var mapProp = {
+                    center: markerCenter,
+                    zoom: 5,
+                    };
+                var map = new google.maps.Map(document.getElementById("map"), mapProp);
+
+                var marker = new google.maps.Marker({
+                    position: markerCenter,
+                    map: map
+                });
+
+            }
+
+            // loads new map and adds markers in array
+            function addMarker(locations) {
+                var locations = places_arr;
+                if (!locations) {
+                    console.log("no locations");
+                    return;
+                }
+
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 4,
+                    center: new google.maps.LatLng(locations[0][1], locations[0][2])
+                });
+
+                // add marker for each city in array and info window showing each city formatted address
+                var infowindow = new google.maps.InfoWindow();
+                var marker, i;
+                var bounds = new google.maps.LatLngBounds();
+
+                for (i = 0; i < locations.length; i++) {
+                    marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                        map: map
+                    });
+
+                    // save location to fit map to all markers
+                    bounds.extend({lat: locations[i][1], lng:locations[i][2]});
+
+                    google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                        return function () {
+                            infowindow.setContent(locations[i][0]);
+                            infowindow.open(map, marker);
+                        }
+                    })(marker, i));
+                }
+                // set map bounds to fit all markers
+                map.fitBounds(bounds);
+            }
+
+            function getPlaceFromID() {
+
+                var places_box = document.getElementById("places");
+                var input = document.getElementById('place_id').value;
+                const geocoder = new google.maps.Geocoder();
+
+                geocoder.geocode({placeId: input})
+                .then(({results}) => {
+                    console.log(results[0].formatted_address, results[0].place_id, results[0].geometry.location.lat(), results[0].geometry.location.lng());
+                    places_box.innerHTML +=
+                        `<b>Place: ${results[0].formatted_address}</b> <br/>
+                         Place ID: ${results[0].place_id} <br/>
+                         Place location: ${results[0].geometry.location.lat()}, ${results[0].geometry.location.lng()} <br/><br/>`;
+                })
+                .catch((e) => {
+                    places_box.innerHTML += `place id invalid or wrong <br/>${e}`
+                });
+
+            }
+
+
+            google.maps.event.addDomListener(window, 'load', initMap);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Gator Hunter</title>
+        <!--Favicon -->
+        <link rel="shortcut icon" href="/img/favicon.ico">
+
+        <!--basic seo-->
+        <meta name="description" content="CSC 648 Team 4 Project">
+
+        <!-- Fontawesome -->
+        <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+        <link rel=”stylesheet” href=”https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css”>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+
+    <body>
+
+        <!--Header-->
+      <%- include("partials/header") %>
+<center>
+    <h1>Admin Page </h1>
+    <div id="search-results">
+            <% if (results.length > 0) { %>
+                 <h2 id="tilte"">Search Results</h2>
+                 <div class="srcontainer">
+                   <% results.forEach(function(post){ %>
+                    <div class="srcontent">
+                     <form action='/posts/del_post' method='POST'>
+                         <p title=> <%=post['title']%> @ <b><%=post['company']%></b>
+                         <br>
+                         Category: <%=post['areas']%>
+                         <br><br> Description: <%=post['description']%>
+                          <br>
+                          Salary: <%=post['salary']%>
+                          <br>
+                          Location: <%=post['location']%>
+                          <br>
+                          Availability: <%=post['availability']%>
+                          </p>
+                         <div id="thumbnail-container" style="height: 100px; width: 100px; border-radius: 15px; background:#7f7f7f; background:rgba(255,255,255,0.65);">
+                            <img src="<%=post['photo']%>" alt="thumbnail" style='height: 100%; width: 100%; object-fit: contain'>
+                         </div>
+                         <input id="pid" name='pid' value='<%=post['pid']%>'>
+                         <button id ="go" type='submit'> Delete Post </button>
+                       
+                         </form>
+                         </div>
+                   <% }) %>
+                        </div>
+            <% } else {%>
+                <p>No results</p>
+            <% } %>
+    </div>
+    </center>
+</body>
+</html>

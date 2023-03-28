@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Sign In</title>
+    <!--Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" />
+
+    <!--basic seo-->
+    <meta name="description" content="CSC 648 Team 4 Project" />
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" />
+    <link rel=”stylesheet”
+    href=”https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css”>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3MMC5N21GP"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-3MMC5N21GP');
+    </script>
+    
+  </head>
+
+  <body>
+    <!--Header-->
+    <!--Header-->
+    <div class="home-banner">
+      <center>
+        <p>
+          SFSU Software Engineering Project CSC 648-848. Spring 2022. For
+          Demostration Only
+        </p>
+      </center>
+    </div>
+
+    <!--Header-->
+    <header>
+      <!--Top navigation-->
+      <div class="nav">
+        <!--Center link-->
+        <div class="nav-center">
+          <a href="/index"><img src="/img/ghlogo.png" alt="logo" /></a>
+        </div>
+
+        <!--Left aligned links-->
+        <a href="/index">Student Find Jobs</a>
+        <a href="/post">Employer /Post jobs</a>
+
+        <!--Right aligned links-->
+      </div>
+    </header>
+
+    <h3>
+      <center>
+        <% if (message) { %>
+        <p><%=message%></p>
+        <% } %>
+      </center>
+    </h3>
+
+    <!--Signin form-->
+    <div class="container3">
+      <span class="details2"
+        ><center><h3>Sign In</h3></center></span
+      >
+      <hr />
+      <div class="content">
+        <form action="/signin" method="POST">
+          <div class="user-details2">
+            <div class="input-box">
+              <span class="details2">Email*</span>
+              <input
+                type="text"
+                name="email"
+                placeholder="Enter email"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <span class="details2">Password*</span>
+              <input
+                type="password"
+                name="password"
+                placeholder="Enter password"
+                required
+              />
+            </div>
+          </div>
+          <br />
+
+          <!--signin button-->
+          <div class="signin-btn">
+            <input type="submit" value="Sign In" />
+          </div>
+        </form>
+        <br />
+        <div id="notreg">
+          <p>Not registered? <a href="register">Sign up!</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!--footer-->
+    <footer class="text-center">
+      <div class="container-footer">
+        <div class="row">
+          <p><a href="about">About Us</a></p>
+          <p>
+            Copyright &copy; 2022 All Rights Reserved By
+            <span>Gator Hunter</span>
+          </p>
+          <div id="footer"></div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+  </body>
+</html>

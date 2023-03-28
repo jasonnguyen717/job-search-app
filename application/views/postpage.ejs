@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Gator Hunter</title>
+        <!--Favicon -->
+        <link rel="shortcut icon" href="/img/favicon.ico">
+
+        <!--basic seo-->
+        <meta name="description" content="CSC 648 Team 4 Project">
+
+        <!-- Fontawesome -->
+        <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
+        <link rel=”stylesheet” href=”https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css”>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/style.css">
+        
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3MMC5N21GP"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-3MMC5N21GP');
+        </script>
+        
+    </head>
+
+
+    <body>
+
+          <!--Header-->
+        <%- include("partials/header") %>
+
+       <!--Search bars-->
+       <div class="container">
+        <div class="row-search">
+        <div class="col-lg-2 col-xs-2"></div>
+        <div class="col-lg-6 col-xs-6">
+
+        <form method="POST" action="/search">
+        <div class="search">
+        <input name="search" type="text" class="searchTerm" placeholder="Search" maxlength="40">
+        <!--Search button-->
+
+            </div>
+            </div>
+
+        <!--Find jobs button (combines search and location buttons)-->
+        <div id="findjobs-btn-pad">
+        <div class="col-lg-2 col-xs-2">
+        <button class="findjobs-btn" type="findjobs" >Find Jobs</button>
+        </div>
+        </div>
+        <div class="col-lg-2 col-xs-2"></div>
+            </div>
+        </div>
+        
+                                 <div class="hide-this">
+        <select name="category" >
+            <option value="">All Categories</option>
+            <option value="Artificial Intelligence and Machine Learning">Artificial Intelligence and Machine Learning</option>
+            <option value="Robotic Process Automation (RPA)">Robotic Process Automation (RPA)</option>
+            <option value="Edge Computing">Edge Computing</option>
+            <option value="Quantum Computing">Quantum Computing</option>
+            <option value="Virtual Reality and Augmented Reality">Virtual Reality and Augmented Reality</option>
+            <option value="Blockchain">Blockchain</option>
+            <option value="Internet of Things (IoT)">Internet of Things (IoT)</option>
+            <option value="5G">5G</option>
+            <option value="Cyber Security">Cyber Security</option>
+        </select>
+        </div>
+
+
+
+        </form>
+
+
+        
+        <!--Sidebar for filter-->
+        <div id="side-bar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
+            <h5>Avalaibility: </h5>
+            <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">Part-Time</label>
+                    <br>
+                    <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">Internship</label>
+                    <br>
+                    <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">Full-Time</label>
+                    <br>
+                    <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">Remote</label>
+                    <br><br>
+            <h5>Location</h5>
+            <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">Within 5 miles</label>
+                    <br>
+                    <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">Within 15 miles</label>
+                    <br>
+                    <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">Within 25 miles</label>
+                    <br>
+                    <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">Within 50 miles</label>
+                    <br><br>
+             <h5>Tech Areas</h5>
+            <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">Artificial Intelligence and Machine Learning</label>
+                    <br>
+                    <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">Robotic Process Automation (RPA)</label>
+                    <br>
+                    <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">Edge Computing</label>
+                    <br>
+                    <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">Quantum Computing</label>
+                    <br>
+            <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">Virtual Reality and Augmented Reality</label>
+                    <br>
+            <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">Blockchain</label>
+                    <br>
+            <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">Internet of Things (IoT)</label>
+                    <br>
+            <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">5G</label>
+                    <br>
+            <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">Cyber Security</label>
+                    <br><br>
+            <h5>Job Postions</h5>
+            <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">Data Engineer</label>
+                    <br>
+                    <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">AI Ethicists</label>
+                    <br>
+                    <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">AI Product Designer</label>
+                    <br><br>
+            <h5>Skills</h5>
+            <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">Python</label>
+                    <br>
+                    <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">JavaScript</label>
+                    <br>
+                    <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">Java</label>
+                    <br><br>
+            <h5>Passion</h5>
+            <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">Social Justice</label>
+                    <br>
+                    <input type="checkbox" id="" name="" value="">
+                    <label class="filter-avail" for="" onclick="">Biomedical</label>
+                    <br><br>
+        </div>
+
+        <!--Search by categories-->
+        <div id="container">
+        <div class="drop">
+            <div class="wrapper">
+            <ul class="drop_menu">
+            <li>
+            <div class="filter-main">
+            <button class="filter-btn" onclick="openNav()">Filter</button>
+                </div> 
+            </li> 
+            <li class="cat"><a href='#'>Tech Areas <i class="fa fa-caret-down"></i></a>
+            <ul>
+               <li><a href="/posts/area/Artificial Intelligence and Machine Learning">Artificial Intelligence and Machine Learning</a></li>
+               <li><a href="/posts/area/Robotic Process Automation (RPA)">Robotic Process Automation (RPA)</a></li>
+               <li><a href="/posts/area/Edge Computing">Edge Computing</a></li>
+               <li><a href="/posts/area/Quantum Computing">Quantum Computing</a></li>
+               <li><a href="/posts/area/Virtual Reality and Augmented Reality">Virtual Reality and Augmented Reality</a></li>
+               <li><a href="/posts/area/Blockchain">Blockchain</a></li>
+               <li><a href="/posts/area/Internet of Things (IoT)">Internet of Things (IoT)</a></li>
+               <li><a href="/posts/area/5G">5G</a></li>
+               <li><a href="/posts/area/Cyber Security">Cyber Security</a></li>
+            </ul>
+            </li>
+           <li class="cat"><a href='#'>Job Position <i class="fa fa-caret-down"></i></a>
+           <ul>
+           <li><a href='/posts/position/Data Engineer'>Data Engineer</a></li>
+           <li><a href='/posts/position/AI Ethicists'>AI Ethicists</a></li>
+           <li><a href='/posts/position/AI Product Designer'>AI Product Designer</a></li>
+           </ul>
+           </li>
+           <li class="cat"><a href='#'>Skills <i class="fa fa-caret-down"></i></a>
+           <ul>
+           <li><a href='/posts/skills/Python'>Python</a></li>
+           <li><a href='/posts/skills/JavaScript'>JavaScript</a></li>
+           <li><a href='/posts/skills/Java'>Java</a></li>
+           </ul>
+           </li>
+           <li class="cat"><a href='#'>Passion <i class="fa fa-caret-down"></i></a>
+           <ul>
+           <li><a href='/posts/passions/Social Justice'>Social Justice</a></li>
+           <li><a href='/posts/passions/Biomedical'>Biomedical</a></li>
+            </ul>
+            </li>
+            </ul>
+            </div>
+            </div>
+        </div>
+        <div class="container4">
+            <% if (post) { %>
+        <p> <%=post['title']%> @ <b><%=post['company']%></b>
+            <br>
+            Category: <%=post['areas']%>
+            <br><br> Description: <%=post['description']%>
+            <br><br>
+            Skills: <%=post['skills']%>
+            <br>
+            Passion: <%=post['passions']%>
+            <br>
+            Salary: <%=post['salary']%>
+            <br>
+            Location: <%=post['location']%>
+            <br>
+            Availability: <%=post['availability']%>
+            <br>
+            Email: <%=post['email']%>
+            <br>
+            Phone Number: <%=post['phone_number']%>
+            </p>
+            <div id="thumbnail-container" style="height: 100px; width: 100px; padding-bottom: 5px;">
+            <img src="<%=post['photo']%>" alt="thumbnail" style='height: 100%; width: 100%; object-fit: contain'>
+            </div>
+
+            <% } else {%>
+                    <p>This is not the page you are looking for</p>
+
+            <% } %>
+            
+         <!-- Google Map -->
+
+        <div id="map">
+        
+        </div>
+        
+        <script>
+            function initMap() {
+                var location = {lat: 37.724455, lng: -122.476111};
+                var map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 4,
+                    center: location
+                });
+
+                var post = <%-JSON.stringify(post)%>;
+                const geocoder = new google.maps.Geocoder();
+                geocoder.geocode({address: post.location})
+                .then(({results}) => {
+//                     places.set(results[0].formatted_address, [results[0].geometry.location.lat(), results[0].geometry.location.lng()])
+                    var marker = new google.maps.Marker({
+                        position: {lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng()},
+                        map: map
+                    })
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
+
+            }
+        </script>
+
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNn0cKBFjgkMS9sfO4mX-xqO4ks9yO5jI&callback=initMap">
+            
+        </script>
+</div>
+    <!--footer-->
+    <%-include("partials/footer")%>
+
+
+
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+        <!-- side bar filter script-->
+    <script>
+    function openNav() {
+            document.getElementById("side-bar").style.width = "310px";
+            }
+
+     function closeNav() {
+            document.getElementById("side-bar").style.width = "0";
+            }
+      
+    </script>
+    </body>
+
+</html>
